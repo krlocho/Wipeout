@@ -24,8 +24,8 @@ return new class extends Migration
 
 
             //FOREIGN KEY STARTS
-            $table->bigInteger('Cliente_id')->unsigned();
-            $table->bigInteger('Tabla_id')->unsigned();
+            $table->bigInteger('Cliente_id')->unsigned()->nullable();
+            $table->bigInteger('Tabla_id')->unsigned()->nullable();
             $table->foreign('Cliente_id')->references('id')->on('clientes')->onDelete('cascade');
             $table->foreign('Tabla_id')->references('id')->on('tablas')->onDelete('cascade');
             //FOREIGN KEY ENDS

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreReparacionRequest;
 use App\Http\Requests\UpdateReparacionRequest;
 use App\Models\Reparacion;
+use App\Models\Cliente;
+use App\Models\Tabla;
 
 class ReparacionController extends Controller
 {
@@ -15,8 +17,9 @@ class ReparacionController extends Controller
      */
     public function index()
     {
-        $reparaciones=Reparacion::orderBy('id','desc')->get();
-        return view('reparaciones.index',compact('reparaciones'));
+        $reparaciones = Reparacion::orderBy('id', 'desc')->get();
+
+        return view('reparacion.index', compact('reparaciones'));
     }
 
     /**
@@ -26,7 +29,7 @@ class ReparacionController extends Controller
      */
     public function create()
     {
-        //
+        return view('reparacion.create');
     }
 
     /**
@@ -37,7 +40,9 @@ class ReparacionController extends Controller
      */
     public function store(StoreReparacionRequest $request)
     {
-        //
+        $datos_reparacion = $request->except('_token');
+        Reparacion::insert($datos_reparacion);
+        return response()->json($datos_reparacion);
     }
 
     /**
@@ -57,9 +62,10 @@ class ReparacionController extends Controller
      * @param  \App\Models\Reparacion  $reparacion
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reparacion $reparacion)
+    public function edit($id)
     {
-        //
+        $reparacion=Reparacion::findOrFail($id);
+        return view('reparacion.edit', compact('reparacion'));
     }
 
     /**
@@ -69,9 +75,12 @@ class ReparacionController extends Controller
      * @param  \App\Models\Reparacion  $reparacion
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateReparacionRequest $request, Reparacion $reparacion)
+    public function update(UpdateReparacionRequest $request, $id)
     {
-        //
+        $datos_reparacion = $request->except('_token','_method');
+        Reparacion::where('id','=', $id)->update($datos_reparacion);
+        $reparacion=Reparacion::findOrFail($id);
+        return view('reparacion.edit', compact('reparacion'));
     }
 
     /**
@@ -80,8 +89,9 @@ class ReparacionController extends Controller
      * @param  \App\Models\Reparacion  $reparacion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reparacion $reparacion)
+    public function destroy( $id)
     {
-        //
+        Reparacion::destroy($id);
+        return redirect('reparaciones')->with('success', 'Reparación eliminada');
     }
 }
