@@ -1,7 +1,9 @@
 
 <label for="Tabla_id">Tabla</label>
-<input type="text" name="Tabla_id" placeholder="Modelo" value="{{ isset($reparacion->Tabla_id) ? $reparacion->Tabla_id : '' }}
-"><br>
+<select name="Tabla_id" id="Tabla_id">
+    @foreach ($tablas as $tabla)
+    <option value="{{ isset($tabla->Modelo) ? $tabla->Modelo : '' }}">{{ $tabla->Modelo}}</option>
+    @endforeach</select><br>
 <label for="Cliente_id">Cliente</label>
 <input type="text" name="Cliente_id" placeholder="Cliente" value="{{ isset($reparacion->Cliente_id) ? $reparacion->Cliente_id : '' }}
 "><br>
