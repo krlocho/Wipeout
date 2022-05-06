@@ -16,8 +16,11 @@ class ReparacionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
     {
         $reparaciones = Reparacion::orderBy('id', 'desc')->get();
+
+
 
         return view('reparacion.index', compact('reparaciones'));
     }
@@ -29,7 +32,8 @@ class ReparacionController extends Controller
      */
     public function create()
     {
-        return view('reparacion.create');
+        //$tablas=Tabla::pluck('Modelo,','id');
+        return view('reparacion.create'/* , compact('tablas') */);
     }
 
     /**

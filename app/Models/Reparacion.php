@@ -11,17 +11,14 @@ class Reparacion extends Model
 {
     use HasFactory;
 
-    public function ppppp()
+
+    public function clientes()
     {
-        return $this->belongsTo(ClienteController::class, 'Cliente_id')->withDefault([
-            'modelo' => 'Anónimo',
-        ]);
+        return $this->belongsTo('App\Models\Cliente', 'Cliente_id');
     }
 
-    public function xxxx()
+    public function tablas()
     {
-        return $this->belongsTo(TablaController::class, 'Tabla_id')->withDefault([
-            'modelo' => 'Anónimo',
-        ]);
+        return $this->belongsTo('App\Models\Tabla', 'Tabla_id', 'id');
     }
 }

@@ -16,8 +16,8 @@
         @foreach ($reparaciones as $reparacion)
             <tr>
                 <td>{{ $reparacion->id }}</td>
-                <td>{{ $reparacion->Tabla_id }} </td>{{-- ->Modelo or 'Sin Autor' --}}
-                <td>{{ $reparacion->Cliente_id }}</td> {{-- ->Nombre or 'Sin Autor' --}}
+                <td>{{ $reparacion->tablas->Modelo}} </td>{{-- ->Modelo or 'Sin Autor' --}}
+                <td>{{ $reparacion->clientes->Nombre }}</td> {{-- ->Nombre or 'Sin Autor' --}}
 
                 <td>{{ $reparacion->Reparacion }}</td>
                 <td>{{ $reparacion->Fecha_llegada }}</td>

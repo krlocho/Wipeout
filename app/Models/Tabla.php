@@ -11,6 +11,7 @@ class Tabla extends Model
 
     public function clientes()
     {
-        return $this->hasMany(Tabla::class, 'Tabla_id');
+        return $this->hasMany(Tabla::class, 'Tabla_id', 'id');
     }
+
 }
