@@ -4,9 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReparacionController; //Importar el controlador
 use App\Http\Controllers\ClienteController; //Importar el controlador
 use App\Http\Controllers\TablaController; //Importar el controlador
-
-
-
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +17,10 @@ use App\Http\Controllers\TablaController; //Importar el controlador
 |
 */
 
-Route::resource('reparaciones', ReparacionController::class);
+
+Route::resource('reparaciones', ReparacionController::class)->middleware(
+    'auth'
+);
 
 //Route::get('/reparacion', function () {
   //  return view('reparacion.index');
