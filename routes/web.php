@@ -18,9 +18,7 @@ use GuzzleHttp\Middleware;
 */
 
 
-Route::resource('reparaciones', ReparacionController::class)->middleware(
-    'auth'
-);
+Route::resource('reparaciones', ReparacionController::class)->middleware('cors')->middleware('auth')->name('reparaciones','*');
 
 //Route::get('/reparacion', function () {
   //  return view('reparacion.index');

@@ -33,9 +33,11 @@ class ReparacionController extends Controller
     public function create()
     {
         $tablas = Tabla::all();
+        $clientes = Cliente::all();
+
 
         //$tablas=Tabla::pluck('Modelo,','id');
-        return view('reparacion.create' , compact('tablas'));
+        return view('reparacion.create' , compact('tablas','clientes'));
     }
 
     /**
@@ -72,8 +74,10 @@ class ReparacionController extends Controller
     {
         $reparacion=Reparacion::findOrFail($id);
         $tablas = Tabla::all();
+        $clientes = Cliente::all();
 
-        return view('reparacion.edit', compact('reparacion','tablas'));
+
+        return view('reparacion.edit', compact('reparacion','tablas','clientes'));
     }
 
     /**
