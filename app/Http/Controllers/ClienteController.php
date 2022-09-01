@@ -15,7 +15,10 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        //
+        $clientes = Cliente::orderBy('id', 'desc')->get();
+
+
+        return view('cliente.index', compact('clientes'));
     }
 
     /**
@@ -25,7 +28,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('cliente.create');
     }
 
     /**
@@ -36,7 +39,9 @@ class ClienteController extends Controller
      */
     public function store(StoreClienteRequest $request)
     {
-        //
+        $datos_cliente = $request->except('_token');
+        Cliente::insert($datos_cliente);
+        return redirect()->route('clientes.index');
     }
 
     /**

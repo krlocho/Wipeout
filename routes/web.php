@@ -20,13 +20,15 @@ use GuzzleHttp\Middleware;
 
 Route::resource('reparaciones', ReparacionController::class)->middleware('cors')->middleware('auth')->name('reparaciones','*');
 
+Route::resource('clientes', ClienteController::class)->middleware('cors')->middleware('auth')->name('clientes','*');
+
 //Route::get('/reparacion', function () {
   //  return view('reparacion.index');
 //});
 //Route::get('/reparacion/create',[ReparacionController::class,'create']);
 
-Route::get('/', function () {
-    return view('welcome')->name('welcome');
+Route::get('/welcome', function () {
+    return view('welcome');
 
 });
 

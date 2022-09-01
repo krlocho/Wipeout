@@ -47,7 +47,7 @@
                         value="{{ isset($reparacion->Observaciones) ? $reparacion->Observaciones : '' }}
                     "><br>
 
-                    <input class="px-4 py-1 mb-2 font-semibold font-bold leading-tight text-white text-gray-800 bg-green-600 rounded-full  grid-justify-items-end right-20 hover:bg-green-700" type="submit" value="Enviar">
+                    <input class="px-4 py-1 mb-2 font-semibold font-bold leading-tight text-white text-gray-800 bg-green-600 rounded-full grid-justify-items-end right-20 hover:bg-green-700" type="submit" value="Enviar">
 
 
 
