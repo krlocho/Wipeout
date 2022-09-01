@@ -26,7 +26,8 @@ Route::resource('reparaciones', ReparacionController::class)->middleware('cors')
 //Route::get('/reparacion/create',[ReparacionController::class,'create']);
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome')->name('welcome');
+
 });
 
 Route::get('/dashboard', function () {

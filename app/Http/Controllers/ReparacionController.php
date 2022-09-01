@@ -92,7 +92,12 @@ class ReparacionController extends Controller
         $datos_reparacion = $request->except('_token','_method');
         Reparacion::where('id','=', $id)->update($datos_reparacion);
         $reparacion=Reparacion::findOrFail($id);
-        return view('reparacion.edit', compact('reparacion'));
+        $tablas = Tabla::all();
+        $clientes = Cliente::all();
+
+
+
+        return view('reparacion.edit', compact('reparacion','tablas','clientes'));
     }
 
     /**

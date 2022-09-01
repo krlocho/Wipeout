@@ -3,15 +3,6 @@
             <h2 class="inline text-xl font-semibold leading-tight text-gray-800 ">
                 {{ __('Reparaciones') }}
             </h2>
-
-
-
-
-
-
-
-
-
     </x-slot>
 
     <div class="py-12">

@@ -11,6 +11,6 @@ class Cliente extends Model
 
     public function reparaciones()
     {
-        return $this->hasMany(Reparacion::class);
+        return $this->hasMany(Reparacion::class,'Cliente_id', 'id');
     }
 }
