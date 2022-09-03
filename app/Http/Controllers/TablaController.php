@@ -15,7 +15,8 @@ class TablaController extends Controller
      */
     public function index()
     {
-        //
+        $tablas= Tabla::orderBy('id','desc')->get();
+        return view('tabla.index', compact('tablas'));
     }
 
     /**

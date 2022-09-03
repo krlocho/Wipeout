@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header" >
             <h2 class="inline text-xl font-semibold leading-tight text-gray-800 ">
-                {{ __('Clientes') }}
+                {{ __('Tablas') }}
             </h2>
     </x-slot>
 
@@ -17,25 +17,22 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Nombre</th>
-                                <th>Apellido</th>
-                                <th>Direccion</th>
-                                <th>Telefono</th>
-                                <th>Email</th>
+                                <th>Modelo</th>
+                                <th>Marca</th>
+                                <th>Color</th>
                                 <th></th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($clientes as $cliente)
+                            @foreach ($tablas as $tabla)
                                 <tr>
-                                    <td>{{ $cliente->id }}</td>
-                                    <td>{{ $cliente->Nombre }} </td>{{-- ->Modelo or 'Sin Autor' --}}
-                                    <td>{{ $cliente->Apellido}}</td> {{-- ->Nombre or 'Sin Autor' --}}
+                                    <td>{{ $tabla->id }}</td>
+                                    <td>{{ $tabla->Modelo }} </td>{{-- ->Modelo or 'Sin Autor' --}}
+                                    <td>{{ $tabla->Marca}}</td> {{-- ->Nombre or 'Sin Autor' --}}
 
-                                    <td>{{ $cliente->Direccion}}</td>
-                                    <td>{{ $cliente->Telefono}}</td>
-                                    <td>{{ $cliente->Email }}</td>
+                                    <td>{{ $tabla->Color}}</td>
+
                                     <td>
                                         <form action="{{ url('/clientes/' . $cliente->id . '/edit') }}">
                                             <button
@@ -69,7 +66,7 @@
             $('#tabla').DataTable({
                 columnDefs: [{
                     orderable: false,
-                    targets: [6, 7]
+                    targets: [4, 5]
                 }],
 
 

@@ -97,7 +97,7 @@ class ReparacionController extends Controller
 
 
 
-        return view('reparacion.edit', compact('reparacion','tablas',));
+        return view('reparacion.edit', compact('reparacion','tablas','clientes'));
     }
 
     /**

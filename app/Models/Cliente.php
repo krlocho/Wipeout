@@ -13,4 +13,9 @@ class Cliente extends Model
     {
         return $this->hasMany(Reparacion::class,'Cliente_id', 'id');
     }
+
+    public function nombreCompleto($value)
+    {
+        return $this->Nombre.' '.$this->Apellido;
+    }
 }

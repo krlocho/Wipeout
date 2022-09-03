@@ -20,7 +20,7 @@
                     "> --}}
                     <select name="Cliente_id" id="Cliente_id" class="rounded-lg">
                         @foreach ( $clientes as $cliente )
-                            <option value="{{ $cliente->id}}">{{$cliente->Nombre }}</option>
+                            <option value="{{ $cliente->id}}">{{$cliente->Nombre.' '.$cliente->Apellido }}</option>
                         @endforeach
                     </select>
                     <br>
@@ -47,7 +47,7 @@
                         value="{{ isset($reparacion->Observaciones) ? $reparacion->Observaciones : '' }}
                     "><br>
 
-                    <input class="px-4 py-1 mb-2 font-semibold font-bold leading-tight text-white text-gray-800 bg-green-600 rounded-full grid-justify-items-end right-20 hover:bg-green-700" type="submit" value="Enviar">
+                    <input class="px-4 py-1 mb-2 font-semibold leading-tight text-white text-gray-800 bg-green-600 rounded-full grid-justify-items-end right-20 hover:bg-green-700" type="submit" value="Enviar">
 
 
 

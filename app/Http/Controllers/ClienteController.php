@@ -61,9 +61,10 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function edit(Cliente $cliente)
+    public function edit($id)
     {
-        //
+        $cliente=Cliente::findOrFail($id);
+        return view('cliente.edit', compact('cliente'));
     }
 
     /**
@@ -73,9 +74,14 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateClienteRequest $request, Cliente $cliente)
+    public function update(UpdateClienteRequest $request,  $id)
     {
-        //
+        $datos_cliente=$request->except('_token','_method');
+        Cliente::where('id','=',$id)->update($datos_cliente);
+        $cliente=Cliente::findOrFail($id);
+
+        return redirect()->route('clientes.index');
+
     }
 
     /**
@@ -84,8 +90,10 @@ class ClienteController extends Controller
      * @param  \App\Models\Cliente  $cliente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Cliente $cliente)
+    public function destroy( $id)
     {
-        //
+        Cliente::destroy($id);
+        return redirect('clientes');
+
     }
 }
