@@ -26,7 +26,7 @@ class TablaController extends Controller
      */
     public function create()
     {
-        //
+        return view('tabla.create');
     }
 
     /**
@@ -37,7 +37,9 @@ class TablaController extends Controller
      */
     public function store(StoreTablaRequest $request)
     {
-        //
+        $datos_tabla= $request->except('_token');
+        Tabla::insert($datos_tabla);
+        return redirect()->route('tablas.index');
     }
 
     /**
@@ -57,9 +59,10 @@ class TablaController extends Controller
      * @param  \App\Models\Tabla  $tabla
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tabla $tabla)
+    public function edit($id)
     {
-        //
+        $tabla=Tabla::findOrFail($id);
+        return view('tabla.edit',compact('tabla'));
     }
 
     /**
@@ -69,9 +72,13 @@ class TablaController extends Controller
      * @param  \App\Models\Tabla  $tabla
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTablaRequest $request, Tabla $tabla)
+    public function update(UpdateTablaRequest $request, $id)
     {
-        //
+        $datos_tabla=$request->except('_token','_method');
+        Tabla::where('id','=',$id)->update($datos_tabla);
+        $tabla=Tabla::findOrFail($id);
+
+        return redirect()->route('tabla.index');
     }
 
     /**
@@ -80,8 +87,9 @@ class TablaController extends Controller
      * @param  \App\Models\Tabla  $tabla
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tabla $tabla)
+    public function destroy($id)
     {
-        //
+        Tabla::destroy($id);
+        return redirect('tablas');
     }
 }

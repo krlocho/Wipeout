@@ -11,7 +11,7 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <table id="tabla">
                         <div  class="grid justify-items-end">
-                        <a href='{{ url("clientes/create") }}' class="px-4 py-1 mb-2 font-semibold font-bold leading-tight text-white text-gray-800 bg-green-600 rounded-full right-20 hover:bg-green-700"> Nueva </a>
+                        <a href='{{ url("tablas/create") }}' class="px-4 py-1 mb-2 font-semibold font-bold leading-tight text-white text-gray-800 bg-green-600 rounded-full right-20 hover:bg-green-700"> Nueva </a>
                     </div>
 
                         <thead>
@@ -34,7 +34,7 @@
                                     <td>{{ $tabla->Color}}</td>
 
                                     <td>
-                                        <form action="{{ url('/clientes/' . $cliente->id . '/edit') }}">
+                                        <form action="{{ url('/tablas/' . $tabla->id . '/edit') }}">
                                             <button
                                                 class="px-4 py-1 font-semibold bg-transparent border rounded text-neutral-900 border-neutral-900 hover:bg-neutral-900 hover:text-white hover:border-transparent">
                                                 Editar </button>
@@ -42,7 +42,7 @@
                                         </button>
                                     </td>
                                     <td>
-                                        <form action="{{ url('/clientes/' . $cliente->id) }}" method="POST">
+                                        <form action="{{ url('/tablas/' . $tabla->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button

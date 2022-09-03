@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('Color')->nullable();
 
             //FOREIGN KEY STARTS
-            $table->bigInteger('Cliente_id')->unsigned();
+            $table->unsignedBigInteger('Cliente_id')->unsigned();
             $table->foreign('Cliente_id')->references('id')->on('clientes')->onDelete('cascade');
-            $table->bigInteger('Reparacion_id')->unsigned();
+            $table->unsignedBigInteger('Reparacion_id')->unsigned();
             $table->foreign('Reparacion_id')->references('id')->on('reparacions')->onDelete('cascade');
             //FOREIGN KEY ENDS
 
