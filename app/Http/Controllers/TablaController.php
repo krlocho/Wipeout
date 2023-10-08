@@ -15,7 +15,7 @@ class TablaController extends Controller
      */
     public function index()
     {
-        $tablas= Tabla::orderBy('id','desc')->get();
+        $tablas= Tabla::getTablaMayusculas();
         return view('tabla.index', compact('tablas'));
     }
 
@@ -78,7 +78,7 @@ class TablaController extends Controller
         Tabla::where('id','=',$id)->update($datos_tabla);
         $tabla=Tabla::findOrFail($id);
 
-        return redirect()->route('tabla.index');
+        return redirect('tablas');
     }
 
     /**

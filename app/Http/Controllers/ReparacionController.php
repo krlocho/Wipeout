@@ -7,6 +7,15 @@ use App\Http\Requests\UpdateReparacionRequest;
 use App\Models\Reparacion;
 use App\Models\Cliente;
 use App\Models\Tabla;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Mail\infoMailable;
+use Illuminate\Support\Facades\Mail;
+
+
+
+
 
 class ReparacionController extends Controller
 {
@@ -18,13 +27,32 @@ class ReparacionController extends Controller
     public function index()
 
     {
-        $reparaciones = Reparacion::orderBy('id', 'desc')->get();
+        $reparaciones = Reparacion::getReparacionMayusculas();
 
 
 
         return view('reparacion.index', compact('reparaciones'));
     }
+    /**
+     * Show the form for creating a new resource.
+     */
 
+     public function mail()
+    {
+        $reparacion=Reparacion::findOrFail($id);
+        $tablas = Tabla::all();
+        $clientes = Cliente::all();
+        $correo =new infoMailable;
+
+        return view('reparacion.index', compact('reparaciones'));
+
+    }
+
+    public function pdf()
+    {
+        $reparaciones = Reparacion::paginate() ->get();
+        return view('reparacion.pdf',compact('reparaciones'));
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -50,7 +78,9 @@ class ReparacionController extends Controller
     {
         $datos_reparacion = $request->except('_token');
         Reparacion::insert($datos_reparacion);
-        return response()->json($datos_reparacion);
+        $reparaciones = Reparacion::orderBy('id', 'desc')->get();
+
+        return view('reparacion.index', compact('reparaciones'));
     }
 
     /**
@@ -59,9 +89,14 @@ class ReparacionController extends Controller
      * @param  \App\Models\Reparacion  $reparacion
      * @return \Illuminate\Http\Response
      */
-    public function show(Reparacion $reparacion)
+    public function show( $id)
     {
-        //
+        $reparacion=Reparacion::findOrFail($id);
+        $tablas = Tabla::all();
+        $clientes = Cliente::all();
+
+
+        return view('reparacion.show', compact('reparacion','tablas','clientes'));
     }
 
     /**
@@ -94,10 +129,12 @@ class ReparacionController extends Controller
         $reparacion=Reparacion::findOrFail($id);
         $tablas = Tabla::all();
         $clientes = Cliente::all();
+        $reparaciones = Reparacion::orderBy('id', 'desc')->get();
 
 
 
-        return view('reparacion.edit', compact('reparacion','tablas','clientes'));
+
+        return view('reparacion.index', compact('reparaciones'));
     }
 
     /**

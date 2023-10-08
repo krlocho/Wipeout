@@ -15,7 +15,7 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $clientes = Cliente::orderBy('id', 'desc')->get();
+        $clientes = Cliente::getClienteMayusculas();
 
 
         return view('cliente.index', compact('clientes'));
@@ -41,7 +41,9 @@ class ClienteController extends Controller
     {
         $datos_cliente = $request->except('_token');
         Cliente::insert($datos_cliente);
-        return redirect()->route('clientes.index');
+        $clientes = Cliente::orderBy('id', 'desc')->get();
+
+        return view('cliente.index', compact('clientes'));
     }
 
     /**
@@ -80,7 +82,7 @@ class ClienteController extends Controller
         Cliente::where('id','=',$id)->update($datos_cliente);
         $cliente=Cliente::findOrFail($id);
 
-        return redirect()->route('clientes.index');
+        return redirect('clientes');
 
     }
 

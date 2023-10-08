@@ -29,14 +29,14 @@
                         <tbody>
                             @foreach ($clientes as $cliente)
                                 <tr>
-                                    <td>{{ $cliente->id }}</td>
-                                    <td>{{ $cliente->Nombre }} </td>{{-- ->Modelo or 'Sin Autor' --}}
-                                    <td>{{ $cliente->Apellido}}</td> {{-- ->Nombre or 'Sin Autor' --}}
+                                    <td class="text-center">{{ $cliente->id }}</td>
+                                    <td class="text-center">{{ $cliente->Nombre }} </td>{{-- ->Modelo or 'Sin Autor' --}}
+                                    <td class="text-center">{{ $cliente->Apellido}}</td> {{-- ->Nombre or 'Sin Autor' --}}
 
-                                    <td>{{ $cliente->Direccion}}</td>
-                                    <td>{{ $cliente->Telefono}}</td>
-                                    <td>{{ $cliente->Email }}</td>
-                                    <td>
+                                    <td class="text-center">{{ $cliente->Direccion}}</td>
+                                    <td class="text-center">{{ $cliente->Telefono}}</td>
+                                    <td class="text-center">{{ $cliente->Email }}</td>
+                                    <td class="text-center">
                                         <form action="{{ url('/clientes/' . $cliente->id . '/edit') }}">
                                             <button
                                                 class="px-4 py-1 font-semibold bg-transparent border rounded text-neutral-900 border-neutral-900 hover:bg-neutral-900 hover:text-white hover:border-transparent">
@@ -44,7 +44,7 @@
                                         </form>
                                         </button>
                                     </td>
-                                    <td>
+                                    <td class="text-center">
                                         <form action="{{ url('/clientes/' . $cliente->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
